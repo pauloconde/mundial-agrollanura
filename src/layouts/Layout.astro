@@ -346,20 +346,40 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
         }
 
         function applyLocalTimes() {
-          var lastDateText = null;
-          document.querySelectorAll('[data-utc]').forEach(function (el) {
+          var counts = {};
+          var elements = Array.from(document.querySelectorAll('[data-utc]'));
+          
+          // First pass: Calculate local strings and counts for date-full elements
+          elements.forEach(function (el) {
             var iso = el.getAttribute('data-utc');
             var fmt = el.getAttribute('data-fmt') || 'time';
             var text = formatLocal(iso, fmt);
+            el.__localText = text; // Cache it
+            if (fmt === 'date-full' && text) {
+              counts[text] = (counts[text] || 0) + 1;
+            }
+          });
+
+          var lastDateText = null;
+
+          // Second pass: Apply logic
+          elements.forEach(function (el) {
+            var fmt = el.getAttribute('data-fmt') || 'time';
+            var text = el.__localText;
             if (text) {
               el.textContent = text;
               if (fmt === 'date-full') {
+                var headerDiv = el.closest('.date-header-container');
                 if (text === lastDateText) {
-                  var headerDiv = el.closest('.date-header-container');
                   if (headerDiv) headerDiv.style.display = 'none';
                 } else {
-                  var headerDiv = el.closest('.date-header-container');
-                  if (headerDiv) headerDiv.style.display = 'flex';
+                  if (headerDiv) {
+                    headerDiv.style.display = 'flex';
+                    var countSpan = headerDiv.querySelector('.match-count');
+                    if (countSpan) {
+                      countSpan.textContent = counts[text] + (counts[text] === 1 ? ' partido' : ' partidos');
+                    }
+                  }
                   lastDateText = text;
                 }
               }

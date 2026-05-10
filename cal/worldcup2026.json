@@ -4,8 +4,7 @@
     {
       "num": 1,
       "round": "Fase de Grupos",
-      "date": "2026-06-11",
-      "time": "15:00",
+      "date": "2026-06-11T19:00:00.000Z",
       "team1": "MEX",
       "team2": "RSA",
       "group": "Grupo A",
@@ -14,8 +13,7 @@
     {
       "num": 2,
       "round": "Fase de Grupos",
-      "date": "2026-06-11",
-      "time": "22:00",
+      "date": "2026-06-12T02:00:00.000Z",
       "team1": "KOR",
       "team2": "CZE",
       "group": "Grupo A",
@@ -24,8 +22,7 @@
     {
       "num": 3,
       "round": "Fase de Grupos",
-      "date": "2026-06-12",
-      "time": "15:00",
+      "date": "2026-06-12T19:00:00.000Z",
       "team1": "CAN",
       "team2": "BIH",
       "group": "Grupo B",
@@ -34,8 +31,7 @@
     {
       "num": 4,
       "round": "Fase de Grupos",
-      "date": "2026-06-12",
-      "time": "21:00",
+      "date": "2026-06-13T01:00:00.000Z",
       "team1": "USA",
       "team2": "PAR",
       "group": "Grupo D",
@@ -44,8 +40,7 @@
     {
       "num": 5,
       "round": "Fase de Grupos",
-      "date": "2026-06-13",
-      "time": "15:00",
+      "date": "2026-06-13T19:00:00.000Z",
       "team1": "QAT",
       "team2": "SUI",
       "group": "Grupo B",
@@ -54,8 +49,7 @@
     {
       "num": 6,
       "round": "Fase de Grupos",
-      "date": "2026-06-13",
-      "time": "18:00",
+      "date": "2026-06-13T22:00:00.000Z",
       "team1": "BRA",
       "team2": "MAR",
       "group": "Grupo C",
@@ -64,8 +58,7 @@
     {
       "num": 7,
       "round": "Fase de Grupos",
-      "date": "2026-06-13",
-      "time": "21:00",
+      "date": "2026-06-14T01:00:00.000Z",
       "team1": "HAI",
       "team2": "SCO",
       "group": "Grupo C",
@@ -74,8 +67,7 @@
     {
       "num": 8,
       "round": "Fase de Grupos",
-      "date": "2026-06-14",
-      "time": "0:00",
+      "date": "2026-06-14T04:00:00.000Z",
       "team1": "AUS",
       "team2": "TUR",
       "group": "Grupo D",
@@ -84,8 +76,7 @@
     {
       "num": 9,
       "round": "Fase de Grupos",
-      "date": "2026-06-14",
-      "time": "13:00",
+      "date": "2026-06-14T17:00:00.000Z",
       "team1": "GER",
       "team2": "CUR",
       "group": "Grupo E",
@@ -94,8 +85,7 @@
     {
       "num": 10,
       "round": "Fase de Grupos",
-      "date": "2026-06-14",
-      "time": "16:00",
+      "date": "2026-06-14T20:00:00.000Z",
       "team1": "NED",
       "team2": "JPN",
       "group": "Grupo F",
@@ -104,8 +94,7 @@
     {
       "num": 11,
       "round": "Fase de Grupos",
-      "date": "2026-06-14",
-      "time": "19:00",
+      "date": "2026-06-14T23:00:00.000Z",
       "team1": "CIV",
       "team2": "ECU",
       "group": "Grupo E",
@@ -114,8 +103,7 @@
     {
       "num": 12,
       "round": "Fase de Grupos",
-      "date": "2026-06-14",
-      "time": "22:00",
+      "date": "2026-06-15T02:00:00.000Z",
       "team1": "SWE",
       "team2": "TUN",
       "group": "Grupo F",
@@ -124,8 +112,7 @@
     {
       "num": 13,
       "round": "Fase de Grupos",
-      "date": "2026-06-15",
-      "time": "12:00",
+      "date": "2026-06-15T16:00:00.000Z",
       "team1": "ESP",
       "team2": "CPV",
       "group": "Grupo H",
@@ -134,8 +121,7 @@
     {
       "num": 14,
       "round": "Fase de Grupos",
-      "date": "2026-06-15",
-      "time": "15:00",
+      "date": "2026-06-15T19:00:00.000Z",
       "team1": "BEL",
       "team2": "EGY",
       "group": "Grupo G",
@@ -144,8 +130,7 @@
     {
       "num": 15,
       "round": "Fase de Grupos",
-      "date": "2026-06-15",
-      "time": "18:00",
+      "date": "2026-06-15T22:00:00.000Z",
       "team1": "KSA",
       "team2": "URU",
       "group": "Grupo H",
@@ -154,8 +139,7 @@
     {
       "num": 16,
       "round": "Fase de Grupos",
-      "date": "2026-06-15",
-      "time": "21:00",
+      "date": "2026-06-16T01:00:00.000Z",
       "team1": "IRN",
       "team2": "NZL",
       "group": "Grupo G",
@@ -164,8 +148,7 @@
     {
       "num": 17,
       "round": "Fase de Grupos",
-      "date": "2026-06-16",
-      "time": "15:00",
+      "date": "2026-06-16T19:00:00.000Z",
       "team1": "FRA",
       "team2": "SEN",
       "group": "Grupo I",
@@ -174,8 +157,7 @@
     {
       "num": 18,
       "round": "Fase de Grupos",
-      "date": "2026-06-16",
-      "time": "18:00",
+      "date": "2026-06-16T22:00:00.000Z",
       "team1": "IRQ",
       "team2": "NOR",
       "group": "Grupo I",
@@ -184,8 +166,7 @@
     {
       "num": 19,
       "round": "Fase de Grupos",
-      "date": "2026-06-16",
-      "time": "21:00",
+      "date": "2026-06-17T01:00:00.000Z",
       "team1": "ARG",
       "team2": "ALG",
       "group": "Grupo J",
@@ -194,8 +175,7 @@
     {
       "num": 20,
       "round": "Fase de Grupos",
-      "date": "2026-06-17",
-      "time": "0:00",
+      "date": "2026-06-17T04:00:00.000Z",
       "team1": "AUT",
       "team2": "JOR",
       "group": "Grupo J",
@@ -204,8 +184,7 @@
     {
       "num": 21,
       "round": "Fase de Grupos",
-      "date": "2026-06-17",
-      "time": "13:00",
+      "date": "2026-06-17T17:00:00.000Z",
       "team1": "POR",
       "team2": "COD",
       "group": "Grupo K",
@@ -214,8 +193,7 @@
     {
       "num": 22,
       "round": "Fase de Grupos",
-      "date": "2026-06-17",
-      "time": "16:00",
+      "date": "2026-06-17T20:00:00.000Z",
       "team1": "ENG",
       "team2": "CRO",
       "group": "Grupo L",
@@ -224,8 +202,7 @@
     {
       "num": 23,
       "round": "Fase de Grupos",
-      "date": "2026-06-17",
-      "time": "19:00",
+      "date": "2026-06-17T23:00:00.000Z",
       "team1": "GHA",
       "team2": "PAN",
       "group": "Grupo L",
@@ -234,8 +211,7 @@
     {
       "num": 24,
       "round": "Fase de Grupos",
-      "date": "2026-06-17",
-      "time": "22:00",
+      "date": "2026-06-18T02:00:00.000Z",
       "team1": "UZB",
       "team2": "COL",
       "group": "Grupo K",
@@ -244,8 +220,7 @@
     {
       "num": 25,
       "round": "Fase de Grupos",
-      "date": "2026-06-18",
-      "time": "12:00",
+      "date": "2026-06-18T16:00:00.000Z",
       "team1": "CZE",
       "team2": "RSA",
       "group": "Grupo A",
@@ -254,8 +229,7 @@
     {
       "num": 26,
       "round": "Fase de Grupos",
-      "date": "2026-06-18",
-      "time": "15:00",
+      "date": "2026-06-18T19:00:00.000Z",
       "team1": "SUI",
       "team2": "BIH",
       "group": "Grupo B",
@@ -264,8 +238,7 @@
     {
       "num": 27,
       "round": "Fase de Grupos",
-      "date": "2026-06-18",
-      "time": "18:00",
+      "date": "2026-06-18T22:00:00.000Z",
       "team1": "CAN",
       "team2": "QAT",
       "group": "Grupo B",
@@ -274,8 +247,7 @@
     {
       "num": 28,
       "round": "Fase de Grupos",
-      "date": "2026-06-18",
-      "time": "21:00",
+      "date": "2026-06-19T01:00:00.000Z",
       "team1": "MEX",
       "team2": "KOR",
       "group": "Grupo A",
@@ -284,8 +256,7 @@
     {
       "num": 29,
       "round": "Fase de Grupos",
-      "date": "2026-06-19",
-      "time": "15:00",
+      "date": "2026-06-19T19:00:00.000Z",
       "team1": "USA",
       "team2": "AUS",
       "group": "Grupo D",
@@ -294,8 +265,7 @@
     {
       "num": 30,
       "round": "Fase de Grupos",
-      "date": "2026-06-19",
-      "time": "18:00",
+      "date": "2026-06-19T22:00:00.000Z",
       "team1": "SCO",
       "team2": "MAR",
       "group": "Grupo C",
@@ -304,8 +274,7 @@
     {
       "num": 31,
       "round": "Fase de Grupos",
-      "date": "2026-06-19",
-      "time": "21:00",
+      "date": "2026-06-20T01:00:00.000Z",
       "team1": "BRA",
       "team2": "HAI",
       "group": "Grupo C",
@@ -314,8 +283,7 @@
     {
       "num": 32,
       "round": "Fase de Grupos",
-      "date": "2026-06-20",
-      "time": "0:00",
+      "date": "2026-06-20T04:00:00.000Z",
       "team1": "TUR",
       "team2": "PAR",
       "group": "Grupo D",
@@ -324,8 +292,7 @@
     {
       "num": 33,
       "round": "Fase de Grupos",
-      "date": "2026-06-20",
-      "time": "13:00",
+      "date": "2026-06-20T17:00:00.000Z",
       "team1": "NED",
       "team2": "SWE",
       "group": "Grupo F",
@@ -334,8 +301,7 @@
     {
       "num": 34,
       "round": "Fase de Grupos",
-      "date": "2026-06-20",
-      "time": "16:00",
+      "date": "2026-06-20T20:00:00.000Z",
       "team1": "GER",
       "team2": "CIV",
       "group": "Grupo E",
@@ -344,8 +310,7 @@
     {
       "num": 35,
       "round": "Fase de Grupos",
-      "date": "2026-06-20",
-      "time": "20:00",
+      "date": "2026-06-21T00:00:00.000Z",
       "team1": "ECU",
       "team2": "CUR",
       "group": "Grupo E",
@@ -354,8 +319,7 @@
     {
       "num": 36,
       "round": "Fase de Grupos",
-      "date": "2026-06-21",
-      "time": "0:00",
+      "date": "2026-06-21T04:00:00.000Z",
       "team1": "TUN",
       "team2": "JPN",
       "group": "Grupo F",
@@ -364,8 +328,7 @@
     {
       "num": 37,
       "round": "Fase de Grupos",
-      "date": "2026-06-21",
-      "time": "12:00",
+      "date": "2026-06-21T16:00:00.000Z",
       "team1": "ESP",
       "team2": "KSA",
       "group": "Grupo H",
@@ -374,8 +337,7 @@
     {
       "num": 38,
       "round": "Fase de Grupos",
-      "date": "2026-06-21",
-      "time": "15:00",
+      "date": "2026-06-21T19:00:00.000Z",
       "team1": "BEL",
       "team2": "IRN",
       "group": "Grupo G",
@@ -384,8 +346,7 @@
     {
       "num": 39,
       "round": "Fase de Grupos",
-      "date": "2026-06-21",
-      "time": "18:00",
+      "date": "2026-06-21T22:00:00.000Z",
       "team1": "URU",
       "team2": "CPV",
       "group": "Grupo H",
@@ -394,8 +355,7 @@
     {
       "num": 40,
       "round": "Fase de Grupos",
-      "date": "2026-06-21",
-      "time": "21:00",
+      "date": "2026-06-22T01:00:00.000Z",
       "team1": "NZL",
       "team2": "EGY",
       "group": "Grupo G",
@@ -404,8 +364,7 @@
     {
       "num": 41,
       "round": "Fase de Grupos",
-      "date": "2026-06-22",
-      "time": "13:00",
+      "date": "2026-06-22T17:00:00.000Z",
       "team1": "ARG",
       "team2": "AUT",
       "group": "Grupo J",
@@ -414,8 +373,7 @@
     {
       "num": 42,
       "round": "Fase de Grupos",
-      "date": "2026-06-22",
-      "time": "17:00",
+      "date": "2026-06-22T21:00:00.000Z",
       "team1": "FRA",
       "team2": "IRQ",
       "group": "Grupo I",
@@ -424,8 +382,7 @@
     {
       "num": 43,
       "round": "Fase de Grupos",
-      "date": "2026-06-22",
-      "time": "20:00",
+      "date": "2026-06-23T00:00:00.000Z",
       "team1": "NOR",
       "team2": "SEN",
       "group": "Grupo I",
@@ -434,8 +391,7 @@
     {
       "num": 44,
       "round": "Fase de Grupos",
-      "date": "2026-06-22",
-      "time": "23:00",
+      "date": "2026-06-23T03:00:00.000Z",
       "team1": "JOR",
       "team2": "ALG",
       "group": "Grupo J",
@@ -444,8 +400,7 @@
     {
       "num": 45,
       "round": "Fase de Grupos",
-      "date": "2026-06-23",
-      "time": "13:00",
+      "date": "2026-06-23T17:00:00.000Z",
       "team1": "POR",
       "team2": "UZB",
       "group": "Grupo K",
@@ -454,8 +409,7 @@
     {
       "num": 46,
       "round": "Fase de Grupos",
-      "date": "2026-06-23",
-      "time": "16:00",
+      "date": "2026-06-23T20:00:00.000Z",
       "team1": "ENG",
       "team2": "GHA",
       "group": "Grupo L",
@@ -464,8 +418,7 @@
     {
       "num": 47,
       "round": "Fase de Grupos",
-      "date": "2026-06-23",
-      "time": "19:00",
+      "date": "2026-06-23T23:00:00.000Z",
       "team1": "PAN",
       "team2": "CRO",
       "group": "Grupo L",
@@ -474,8 +427,7 @@
     {
       "num": 48,
       "round": "Fase de Grupos",
-      "date": "2026-06-23",
-      "time": "22:00",
+      "date": "2026-06-24T02:00:00.000Z",
       "team1": "COL",
       "team2": "COD",
       "group": "Grupo K",
@@ -484,8 +436,7 @@
     {
       "num": 49,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "15:00",
+      "date": "2026-06-24T19:00:00.000Z",
       "team1": "SUI",
       "team2": "CAN",
       "group": "Grupo B",
@@ -494,8 +445,7 @@
     {
       "num": 50,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "15:00",
+      "date": "2026-06-24T19:00:00.000Z",
       "team1": "BIH",
       "team2": "QAT",
       "group": "Grupo B",
@@ -504,8 +454,7 @@
     {
       "num": 51,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "18:00",
+      "date": "2026-06-24T22:00:00.000Z",
       "team1": "SCO",
       "team2": "BRA",
       "group": "Grupo C",
@@ -514,8 +463,7 @@
     {
       "num": 52,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "18:00",
+      "date": "2026-06-24T22:00:00.000Z",
       "team1": "MAR",
       "team2": "HAI",
       "group": "Grupo C",
@@ -524,8 +472,7 @@
     {
       "num": 53,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "21:00",
+      "date": "2026-06-25T01:00:00.000Z",
       "team1": "CZE",
       "team2": "MEX",
       "group": "Grupo A",
@@ -534,8 +481,7 @@
     {
       "num": 54,
       "round": "Fase de Grupos",
-      "date": "2026-06-24",
-      "time": "21:00",
+      "date": "2026-06-25T01:00:00.000Z",
       "team1": "RSA",
       "team2": "KOR",
       "group": "Grupo A",
@@ -544,8 +490,7 @@
     {
       "num": 55,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "16:00",
+      "date": "2026-06-25T20:00:00.000Z",
       "team1": "CUR",
       "team2": "CIV",
       "group": "Grupo E",
@@ -554,8 +499,7 @@
     {
       "num": 56,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "16:00",
+      "date": "2026-06-25T20:00:00.000Z",
       "team1": "ECU",
       "team2": "GER",
       "group": "Grupo E",
@@ -564,8 +508,7 @@
     {
       "num": 57,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "19:00",
+      "date": "2026-06-25T23:00:00.000Z",
       "team1": "JPN",
       "team2": "SWE",
       "group": "Grupo F",
@@ -574,8 +517,7 @@
     {
       "num": 58,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "19:00",
+      "date": "2026-06-25T23:00:00.000Z",
       "team1": "TUN",
       "team2": "NED",
       "group": "Grupo F",
@@ -584,8 +526,7 @@
     {
       "num": 59,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "22:00",
+      "date": "2026-06-26T02:00:00.000Z",
       "team1": "TUR",
       "team2": "USA",
       "group": "Grupo D",
@@ -594,8 +535,7 @@
     {
       "num": 60,
       "round": "Fase de Grupos",
-      "date": "2026-06-25",
-      "time": "22:00",
+      "date": "2026-06-26T02:00:00.000Z",
       "team1": "PAR",
       "team2": "AUS",
       "group": "Grupo D",
@@ -604,8 +544,7 @@
     {
       "num": 61,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "15:00",
+      "date": "2026-06-26T19:00:00.000Z",
       "team1": "NOR",
       "team2": "FRA",
       "group": "Grupo I",
@@ -614,8 +553,7 @@
     {
       "num": 62,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "15:00",
+      "date": "2026-06-26T19:00:00.000Z",
       "team1": "SEN",
       "team2": "IRQ",
       "group": "Grupo I",
@@ -624,8 +562,7 @@
     {
       "num": 63,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "20:00",
+      "date": "2026-06-27T00:00:00.000Z",
       "team1": "CPV",
       "team2": "KSA",
       "group": "Grupo H",
@@ -634,8 +571,7 @@
     {
       "num": 64,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "20:00",
+      "date": "2026-06-27T00:00:00.000Z",
       "team1": "URU",
       "team2": "ESP",
       "group": "Grupo H",
@@ -644,8 +580,7 @@
     {
       "num": 65,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "23:00",
+      "date": "2026-06-27T03:00:00.000Z",
       "team1": "EGY",
       "team2": "IRN",
       "group": "Grupo G",
@@ -654,8 +589,7 @@
     {
       "num": 66,
       "round": "Fase de Grupos",
-      "date": "2026-06-26",
-      "time": "23:00",
+      "date": "2026-06-27T03:00:00.000Z",
       "team1": "NZL",
       "team2": "BEL",
       "group": "Grupo G",
@@ -664,8 +598,7 @@
     {
       "num": 67,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "17:00",
+      "date": "2026-06-27T21:00:00.000Z",
       "team1": "PAN",
       "team2": "ENG",
       "group": "Grupo L",
@@ -674,8 +607,7 @@
     {
       "num": 68,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "17:00",
+      "date": "2026-06-27T21:00:00.000Z",
       "team1": "CRO",
       "team2": "GHA",
       "group": "Grupo L",
@@ -684,8 +616,7 @@
     {
       "num": 69,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "19:30",
+      "date": "2026-06-27T23:30:00.000Z",
       "team1": "COL",
       "team2": "POR",
       "group": "Grupo K",
@@ -694,8 +625,7 @@
     {
       "num": 70,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "19:30",
+      "date": "2026-06-27T23:30:00.000Z",
       "team1": "COD",
       "team2": "UZB",
       "group": "Grupo K",
@@ -704,8 +634,7 @@
     {
       "num": 71,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "22:00",
+      "date": "2026-06-28T02:00:00.000Z",
       "team1": "ALG",
       "team2": "AUT",
       "group": "Grupo J",
@@ -714,8 +643,7 @@
     {
       "num": 72,
       "round": "Fase de Grupos",
-      "date": "2026-06-27",
-      "time": "22:00",
+      "date": "2026-06-28T02:00:00.000Z",
       "team1": "JOR",
       "team2": "ARG",
       "group": "Grupo J",
@@ -724,8 +652,7 @@
     {
       "num": 73,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-28",
-      "time": "15:00",
+      "date": "2026-06-28T19:00:00.000Z",
       "team1": "2A",
       "team2": "2B",
       "ground": "Los Angeles"
@@ -733,8 +660,7 @@
     {
       "num": 74,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-29",
-      "time": "13:00",
+      "date": "2026-06-29T17:00:00.000Z",
       "team1": "1C",
       "team2": "2F",
       "ground": "Houston"
@@ -742,8 +668,7 @@
     {
       "num": 75,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-29",
-      "time": "16:30",
+      "date": "2026-06-29T20:30:00.000Z",
       "team1": "1E",
       "team2": "3ABCDF",
       "ground": "Boston"
@@ -751,8 +676,7 @@
     {
       "num": 76,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-29",
-      "time": "21:00",
+      "date": "2026-06-30T01:00:00.000Z",
       "team1": "1F",
       "team2": "2C",
       "ground": "Monterrey"
@@ -760,8 +684,7 @@
     {
       "num": 77,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-30",
-      "time": "13:00",
+      "date": "2026-06-30T17:00:00.000Z",
       "team1": "2E",
       "team2": "2I",
       "ground": "Dallas"
@@ -769,8 +692,7 @@
     {
       "num": 78,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-30",
-      "time": "17:00",
+      "date": "2026-06-30T21:00:00.000Z",
       "team1": "1I",
       "team2": "3CDFGH",
       "ground": "Nueva York/Nueva Jersey"
@@ -778,8 +700,7 @@
     {
       "num": 79,
       "round": "Dieciséisavos de Final",
-      "date": "2026-06-30",
-      "time": "21:00",
+      "date": "2026-07-01T01:00:00.000Z",
       "team1": "1A",
       "team2": "3CEFHI",
       "ground": "Ciudad de México"
@@ -787,8 +708,7 @@
     {
       "num": 80,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-01",
-      "time": "12:00",
+      "date": "2026-07-01T16:00:00.000Z",
       "team1": "1L",
       "team2": "3EHIJK",
       "ground": "Atlanta"
@@ -796,8 +716,7 @@
     {
       "num": 81,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-01",
-      "time": "16:00",
+      "date": "2026-07-01T20:00:00.000Z",
       "team1": "1G",
       "team2": "3AEHIJ",
       "ground": "Seattle"
@@ -805,8 +724,7 @@
     {
       "num": 82,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-01",
-      "time": "20:00",
+      "date": "2026-07-02T00:00:00.000Z",
       "team1": "1D",
       "team2": "3BEFIJ",
       "ground": "Área de la Bahía de San Francisco"
@@ -814,8 +732,7 @@
     {
       "num": 83,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-02",
-      "time": "15:00",
+      "date": "2026-07-02T19:00:00.000Z",
       "team1": "1H",
       "team2": "2J",
       "ground": "Los Angeles"
@@ -823,8 +740,7 @@
     {
       "num": 84,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-02",
-      "time": "19:00",
+      "date": "2026-07-02T23:00:00.000Z",
       "team1": "2K",
       "team2": "2L",
       "ground": "Toronto"
@@ -832,8 +748,7 @@
     {
       "num": 85,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-02",
-      "time": "23:00",
+      "date": "2026-07-03T03:00:00.000Z",
       "team1": "1B",
       "team2": "3EFGIJ",
       "ground": "Vancouver"
@@ -841,8 +756,7 @@
     {
       "num": 86,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-03",
-      "time": "14:00",
+      "date": "2026-07-03T18:00:00.000Z",
       "team1": "2D",
       "team2": "2G",
       "ground": "Dallas"
@@ -850,8 +764,7 @@
     {
       "num": 87,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-03",
-      "time": "18:00",
+      "date": "2026-07-03T22:00:00.000Z",
       "team1": "1J",
       "team2": "2H",
       "ground": "Miami"
@@ -859,8 +772,7 @@
     {
       "num": 88,
       "round": "Dieciséisavos de Final",
-      "date": "2026-07-03",
-      "time": "21:30",
+      "date": "2026-07-04T01:30:00.000Z",
       "team1": "1K",
       "team2": "3DEIJL",
       "ground": "Kansas City"
@@ -868,8 +780,7 @@
     {
       "num": 89,
       "round": "Octavos de Final",
-      "date": "2026-07-04",
-      "time": "13:00",
+      "date": "2026-07-04T17:00:00.000Z",
       "team1": "W73",
       "team2": "W75",
       "ground": "Houston"
@@ -877,8 +788,7 @@
     {
       "num": 90,
       "round": "Octavos de Final",
-      "date": "2026-07-04",
-      "time": "17:00",
+      "date": "2026-07-04T21:00:00.000Z",
       "team1": "W74",
       "team2": "W77",
       "ground": "Philadelphia"
@@ -886,8 +796,7 @@
     {
       "num": 91,
       "round": "Octavos de Final",
-      "date": "2026-07-05",
-      "time": "16:00",
+      "date": "2026-07-05T20:00:00.000Z",
       "team1": "W76",
       "team2": "W78",
       "ground": "Nueva York/Nueva Jersey"
@@ -895,8 +804,7 @@
     {
       "num": 92,
       "round": "Octavos de Final",
-      "date": "2026-07-05",
-      "time": "20:00",
+      "date": "2026-07-06T00:00:00.000Z",
       "team1": "W79",
       "team2": "W80",
       "ground": "Ciudad de México"
@@ -904,8 +812,7 @@
     {
       "num": 93,
       "round": "Octavos de Final",
-      "date": "2026-07-06",
-      "time": "15:00",
+      "date": "2026-07-06T19:00:00.000Z",
       "team1": "W83",
       "team2": "W84",
       "ground": "Dallas"
@@ -913,8 +820,7 @@
     {
       "num": 94,
       "round": "Octavos de Final",
-      "date": "2026-07-06",
-      "time": "20:00",
+      "date": "2026-07-07T00:00:00.000Z",
       "team1": "W81",
       "team2": "W82",
       "ground": "Seattle"
@@ -922,8 +828,7 @@
     {
       "num": 95,
       "round": "Octavos de Final",
-      "date": "2026-07-07",
-      "time": "12:00",
+      "date": "2026-07-07T16:00:00.000Z",
       "team1": "W86",
       "team2": "W88",
       "ground": "Atlanta"
@@ -931,8 +836,7 @@
     {
       "num": 96,
       "round": "Octavos de Final",
-      "date": "2026-07-07",
-      "time": "16:00",
+      "date": "2026-07-07T20:00:00.000Z",
       "team1": "W85",
       "team2": "W87",
       "ground": "Vancouver"
@@ -940,8 +844,7 @@
     {
       "num": 97,
       "round": "Cuartos de Final",
-      "date": "2026-07-09",
-      "time": "16:00",
+      "date": "2026-07-09T20:00:00.000Z",
       "team1": "W89",
       "team2": "W90",
       "ground": "Boston"
@@ -949,8 +852,7 @@
     {
       "num": 98,
       "round": "Cuartos de Final",
-      "date": "2026-07-10",
-      "time": "15:00",
+      "date": "2026-07-10T19:00:00.000Z",
       "team1": "W93",
       "team2": "W94",
       "ground": "Los Angeles"
@@ -958,8 +860,7 @@
     {
       "num": 99,
       "round": "Cuartos de Final",
-      "date": "2026-07-11",
-      "time": "17:00",
+      "date": "2026-07-11T21:00:00.000Z",
       "team1": "W91",
       "team2": "W92",
       "ground": "Miami"
@@ -967,8 +868,7 @@
     {
       "num": 100,
       "round": "Cuartos de Final",
-      "date": "2026-07-11",
-      "time": "21:00",
+      "date": "2026-07-12T01:00:00.000Z",
       "team1": "W95",
       "team2": "W100",
       "ground": "Kansas City"
@@ -976,8 +876,7 @@
     {
       "num": 101,
       "round": "Semifinales",
-      "date": "2026-07-14",
-      "time": "15:00",
+      "date": "2026-07-14T19:00:00.000Z",
       "team1": "W97",
       "team2": "W98",
       "ground": "Dallas"
@@ -985,8 +884,7 @@
     {
       "num": 102,
       "round": "Semifinales",
-      "date": "2026-07-15",
-      "time": "15:00",
+      "date": "2026-07-15T19:00:00.000Z",
       "team1": "W99",
       "team2": "W100",
       "ground": "Atlanta"
@@ -994,8 +892,7 @@
     {
       "num": 103,
       "round": "Tercer Puesto",
-      "date": "2026-07-18",
-      "time": "17:00",
+      "date": "2026-07-18T21:00:00.000Z",
       "team1": "RU101",
       "team2": "RU102",
       "ground": "Miami"
@@ -1003,8 +900,7 @@
     {
       "num": 104,
       "round": "Final",
-      "date": "2026-07-19",
-      "time": "15:00",
+      "date": "2026-07-19T19:00:00.000Z",
       "team1": "W101",
       "team2": "W102",
       "ground": "Nueva York/Nueva Jersey"

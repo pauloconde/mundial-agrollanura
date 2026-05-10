@@ -49,15 +49,24 @@ const matches = matchesCsv.map(m => {
   const round = stages[m.stage_id] || '';
   
   let date = '';
-  let time = '';
   if (m.kickoff_at) {
     const [dPart, tPart] = m.kickoff_at.split(' ');
     const [day, month, year] = dPart.split('/');
     const fullYear = `20${year}`;
-    const paddedMonth = month.padStart(2, '0');
-    const paddedDay = day.padStart(2, '0');
-    date = `${fullYear}-${paddedMonth}-${paddedDay}`;
-    time = tPart;
+    const [hStr, mStr] = tPart.split(':');
+    const etHour = parseInt(hStr, 10);
+    const min = parseInt(mStr, 10);
+    
+    // Eastern Daylight Time (EDT) is UTC-4 in summer
+    const dt = new Date(Date.UTC(
+      parseInt(fullYear, 10),
+      parseInt(month, 10) - 1,
+      parseInt(day, 10),
+      etHour + 4,
+      min
+    ));
+    
+    date = dt.toISOString();
   }
   
   let team1 = '';
@@ -89,7 +98,6 @@ const matches = matchesCsv.map(m => {
     num,
     round,
     date,
-    time,
     team1,
     team2
   };

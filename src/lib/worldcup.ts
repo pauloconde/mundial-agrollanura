@@ -23,8 +23,8 @@ export interface Goal {
 export interface Match {
   round: string;
   num?: number;
-  date: string;          // "2026-06-11"
-  time: string;          // "13:00 UTC-6"
+  date: string;          // "2026-06-11T19:00:00.000Z" (nuevo) o "2026-06-11" (antiguo)
+  time?: string;         // "13:00 UTC-6" (antiguo), opcional ahora
   team1: string;
   team2: string;
   group?: string;
@@ -190,7 +190,11 @@ const FLAG_CODES: Record<string, string> = {
 };
 
 export function getFlagUrl(team: string): string {
-  const code = FLAG_CODES[team] ?? team.toLowerCase().replace(/\s+/g, '-').substring(0, 2);
+  // Si no es un código FIFA de exactamente 3 letras (ej. "RU101", "W99", "1A"), es un placeholder
+  if (!/^[A-Z]{3}$/.test(team)) {
+    return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; // píxel transparente
+  }
+  const code = FLAG_CODES[team] ?? team.toLowerCase().substring(0, 2);
   return `https://flagcdn.com/28x21/${code}.png`;
 }
 
@@ -199,21 +203,29 @@ export function getFlagUrl(team: string): string {
 // ──────────────────────────────────────────────
 
 /**
- * Parsea "15:00" a un objeto Date en UTC, dado "2026-06-11"
+ * Parsea a un objeto Date. Si timeStr no existe, asume que dateStr es un ISO 8601 UTC.
+ * Si timeStr existe, asume que viene en Eastern Time (EDT, UTC-4 en verano), dado "2026-06-11".
  */
-export function parseMatchDate(dateStr: string, timeStr: string): Date {
+export function parseMatchDate(dateStr: string, timeStr?: string): Date {
+  if (!timeStr) {
+    return new Date(dateStr);
+  }
+
   const [hStr, mStr] = timeStr.split(':');
   if (!hStr || !mStr) return new Date(`${dateStr}T12:00:00Z`);
 
-  const utcHour = parseInt(hStr, 10);
-  const localMin  = parseInt(mStr, 10);
+  const etHour = parseInt(hStr, 10);
+  const min  = parseInt(mStr, 10);
+
+  // Eastern Daylight Time (EDT) es UTC-4 en verano (junio/julio)
+  const utcHour = etHour + 4;
 
   return new Date(Date.UTC(
     parseInt(dateStr.slice(0, 4), 10),
     parseInt(dateStr.slice(5, 7), 10) - 1,
     parseInt(dateStr.slice(8, 10), 10),
     utcHour,
-    localMin
+    min
   ));
 }
 
@@ -427,12 +439,12 @@ export function getUniqueVenues(data: WorldCupData): string[] {
 // ──────────────────────────────────────────────
 
 /** Formatea la hora local (ej: "15:00") */
-export function formatLocalTime(match: Match): string {
+export function getMatchTimeStr(match: Match): string {
   try {
     return parseMatchDate(match.date, match.time)
-      .toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
-  } catch {
-    return match.time;
+      .toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+  } catch (e) {
+    return match.time ?? "--:--";
   }
 }
 
