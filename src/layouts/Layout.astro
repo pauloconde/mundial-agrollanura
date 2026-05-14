@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { fetchWorldCupData, getMatchUTC } from '../lib/worldcup';
 import sponsorInfo from '../data/sponsor.json';
+import InstallIOSGuide from '../components/InstallIOSGuide.astro';
 // @ts-ignore
 import { pwaInfo } from 'virtual:pwa-info';
 
@@ -79,6 +80,8 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
         // Si el drawer ya está listo, mostrar el botón
         var section = document.getElementById('install-android');
         if (section) section.style.display = 'block';
+        var headerBtn = document.getElementById('header-install-btn');
+        if (headerBtn) headerBtn.style.display = 'flex';
       });
     </script>
   </head>
@@ -121,6 +124,16 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
             <span class="live-dot"></span>
             <span class="text-[10px] font-bold text-red-400 tracking-wider">LIVE</span>
           </div>
+
+          <!-- Botón instalar PWA en header -->
+          <button id="header-install-btn"
+                  class="w-9 h-9 rounded-full transition-all hover:opacity-80 active:scale-95"
+                  style="display: none; align-items: center; justify-content: center; color: var(--brand-nav-icon-active, #f59e0b);"
+                  aria-label="Instalar App">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </button>
 
           <!-- Botón abrir drawer -->
           <button id="drawer-open"
@@ -245,20 +258,7 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
           <!-- Guía instalar iOS -->
           <div id="install-ios" style="display:none;" class="px-2">
             <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-500 mb-2">Instalar en iPhone</p>
-            <div class="rounded-2xl p-4 space-y-3 text-sm" style="background: rgba(0,0,0,0.2);">
-              <div class="flex items-start gap-3">
-                <span class="text-xl shrink-0">1️⃣</span>
-                <p style="color: var(--brand-nav-text, #d1d5db);">Toca el botón <strong>Compartir</strong> <span class="inline-block">&#x1F4E4;</span> en Safari</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-xl shrink-0">2️⃣</span>
-                <p style="color: var(--brand-nav-text, #d1d5db);">Selecciona <strong>“Añadir a inicio”</strong></p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-xl shrink-0">3️⃣</span>
-                <p style="color: var(--brand-nav-text, #d1d5db);">Toca <strong>“Añadir”</strong> en la esquina superior derecha</p>
-              </div>
-            </div>
+            <InstallIOSGuide />
           </div>
         </div>
 
@@ -312,6 +312,22 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
         </div>
       </div>
     </aside>
+
+    <!-- ── iOS Install Modal ── -->
+    <div id="ios-modal-backdrop" class="fixed inset-0 z-[9000] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" style="display:none; opacity:0; transition: opacity 0.3s;" aria-hidden="true">
+      <div id="ios-modal-panel" class="w-full max-w-sm rounded-3xl p-6 relative transform scale-95 transition-transform duration-300" style="background: var(--brand-drawer-bg, #0a0e1a); border: 1px solid var(--border-subtle);">
+        <button id="ios-modal-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full transition-colors hover:bg-white/10" style="color: var(--brand-nav-icon, #6b7280);" aria-label="Cerrar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        
+        <div class="text-center mb-6 mt-2">
+          <h3 class="text-lg font-bold font-['Outfit']" style="color: var(--brand-nav-text, #fff);">Instalar en iPhone</h3>
+          <p class="text-xs opacity-70 mt-1" style="color: var(--brand-nav-text, #fff);">Ten tu app siempre a la mano</p>
+        </div>
+        
+        <InstallIOSGuide />
+      </div>
+    </div>
 
     <!-- ── Main Content ── -->
     <main class="pt-14 min-h-screen">
@@ -574,39 +590,73 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
 
         // ── PWA Install: Android ──
         var section = document.getElementById('install-android');
+        var headerBtn = document.getElementById('header-install-btn');
         
         // Mostrar SOLO si el navegador permite la instalación automática
-        if (window.deferredPrompt && section) {
-          section.style.display = 'block';
+        if (window.deferredPrompt) {
+          if (section) section.style.display = 'block';
+          if (headerBtn) headerBtn.style.display = 'flex';
+        }
+
+        function handleInstallClick() {
+          if (!window.deferredPrompt) return;
+          window.deferredPrompt.prompt();
+          window.deferredPrompt.userChoice.then(function () {
+            window.deferredPrompt = null;
+            if (section) section.style.display = 'none';
+            if (headerBtn) headerBtn.style.display = 'none';
+          });
         }
 
         var installBtn = document.getElementById('install-btn');
-        if (installBtn) {
-          installBtn.addEventListener('click', function () {
-            if (!window.deferredPrompt) return;
-            window.deferredPrompt.prompt();
-            window.deferredPrompt.userChoice.then(function () {
-              window.deferredPrompt = null;
-              if (section) section.style.display = 'none';
-            });
-          });
-        }
+        if (installBtn) installBtn.addEventListener('click', handleInstallClick);
+        if (headerBtn) headerBtn.addEventListener('click', handleInstallClick);
 
         // ── PWA Install: iOS (Safari) ──
         var isIOS    = /iphone|ipad|ipod/i.test(navigator.userAgent);
         var isSafari = /safari/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent);
         var isStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
         
-        // Para previsualizar en escritorio durante el desarrollo (opcional)
-        // if (window.location.hostname === 'localhost') {
-        //   var iosSection = document.getElementById('install-ios');
-        //   if (iosSection) iosSection.style.display = 'block';
-        //   if (section) section.style.display = 'block';
-        // }
+        var iosModalBackdrop = document.getElementById('ios-modal-backdrop');
+        var iosModalPanel = document.getElementById('ios-modal-panel');
+        var iosModalClose = document.getElementById('ios-modal-close');
+
+        function openIosModal() {
+          if (!iosModalBackdrop) return;
+          iosModalBackdrop.style.display = 'flex';
+          requestAnimationFrame(function () {
+            iosModalBackdrop.style.opacity = '1';
+            iosModalPanel.style.transform = 'scale(1)';
+          });
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeIosModal() {
+          if (!iosModalBackdrop) return;
+          iosModalBackdrop.style.opacity = '0';
+          iosModalPanel.style.transform = 'scale(0.95)';
+          setTimeout(function () {
+            iosModalBackdrop.style.display = 'none';
+            document.body.style.overflow = '';
+          }, 300);
+        }
+
+        if (iosModalClose) iosModalClose.addEventListener('click', closeIosModal);
+        if (iosModalBackdrop) {
+          iosModalBackdrop.addEventListener('click', function(e) {
+            if (e.target === iosModalBackdrop) closeIosModal();
+          });
+        }
 
         if (isIOS && isSafari && !isStandalone) {
           var iosSection = document.getElementById('install-ios');
           if (iosSection) iosSection.style.display = 'block';
+          
+          if (headerBtn) {
+            headerBtn.style.display = 'flex';
+            headerBtn.removeEventListener('click', handleInstallClick);
+            headerBtn.addEventListener('click', openIosModal);
+          }
         }
       })();
     </script>
