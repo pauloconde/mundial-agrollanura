@@ -115,6 +115,12 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
       >
         <!-- Banner Container Wrapper (Constrained to App's max-w-lg width) -->
         <div class="relative w-full max-w-lg h-full flex flex-col items-center justify-center bg-black">
+          
+          <!-- Indicador visual de tiempo -->
+          <div id="banner-progress-container" class="absolute top-0 left-0 w-full h-1.5 bg-black/40 z-[10001] hidden">
+            <div id="banner-progress-bar" class="h-full w-full bg-white/90 origin-left scale-x-0"></div>
+          </div>
+
           <!-- Banner Image -->
           <img
             id="page-banner-img"
@@ -201,6 +207,23 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
 
               // Set up automatic close timer if duration > 0
               if (bannerDuration > 0) {
+                const progressContainer = document.getElementById('banner-progress-container');
+                const progressBar = document.getElementById('banner-progress-bar');
+                
+                if (progressContainer && progressBar) {
+                  progressContainer.style.display = 'block';
+                  progressBar.style.transition = 'none';
+                  progressBar.style.transform = 'scaleX(0)';
+                  
+                  // Trigger reflow to restart animation
+                  void progressBar.offsetWidth;
+                  
+                  requestAnimationFrame(function () {
+                    progressBar.style.transition = 'transform ' + bannerDuration + 's linear';
+                    progressBar.style.transform = 'scaleX(1)';
+                  });
+                }
+
                 autoCloseTimer = setTimeout(closeBanner, bannerDuration * 1000);
               }
 
