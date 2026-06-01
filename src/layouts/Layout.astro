@@ -118,7 +118,7 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
           
           <!-- Indicador visual de tiempo -->
           <div id="banner-progress-container" class="absolute top-0 left-0 w-full h-1.5 bg-black/40 z-[10001] hidden">
-            <div id="banner-progress-bar" class="h-full w-full bg-white/90 origin-left scale-x-0"></div>
+            <div id="banner-progress-bar" class="h-full bg-white/90" style="width: 0%;"></div>
           </div>
 
           <!-- Banner Image -->
@@ -213,14 +213,14 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
                 if (progressContainer && progressBar) {
                   progressContainer.style.display = 'block';
                   progressBar.style.transition = 'none';
-                  progressBar.style.transform = 'scaleX(0)';
+                  progressBar.style.width = '0%';
                   
                   // Trigger reflow to restart animation
                   void progressBar.offsetWidth;
                   
                   requestAnimationFrame(function () {
-                    progressBar.style.transition = 'transform ' + bannerDuration + 's linear';
-                    progressBar.style.transform = 'scaleX(1)';
+                    progressBar.style.transition = 'width ' + bannerDuration + 's linear';
+                    progressBar.style.width = '100%';
                   });
                 }
 
