@@ -213,6 +213,7 @@ const teams = Object.entries(TEAM_ES)
           try {
             const [res, markedModule] = await Promise.all([
               fetch('/bases.md'),
+              // @ts-ignore
               import('https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js')
             ]);
             
