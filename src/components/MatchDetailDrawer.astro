@@ -595,6 +595,13 @@ import sponsorInfo from '../data/sponsor.json';
   }
 
   const PERIOD_LABELS: Record<string, string> = {
+    'PEN': 'Tanda de Penaltis',
+    '2TS': 'Segundo Tiempo Extra',
+    '1TS': 'Primer Tiempo Extra',
+    '2T': 'Segundo Tiempo',
+    '1T': 'Primer Tiempo',
+    'ET': 'Entretiempo',
+    // Fallbacks for legacy records
     'penaltis': 'Tanda de Penaltis',
     'segundo_extra': 'Segundo Tiempo Extra',
     'primer_extra': 'Primer Tiempo Extra',
@@ -603,11 +610,11 @@ import sponsorInfo from '../data/sponsor.json';
   };
 
   function getPeriod(minuto: number) {
-    if (minuto > 120) return 'penaltis';
-    if (minuto > 105) return 'segundo_extra';
-    if (minuto > 90) return 'primer_extra';
-    if (minuto > 45) return 'segundo_tiempo';
-    return 'primer_tiempo';
+    if (minuto > 120) return 'PEN';
+    if (minuto > 105) return '2TS';
+    if (minuto > 90) return '1TS';
+    if (minuto > 45) return '2T';
+    return '1T';
   }
 
   function createPeriodDividerDOM(period: string) {
@@ -648,7 +655,7 @@ import sponsorInfo from '../data/sponsor.json';
     let currentPeriod: string | null = null;
 
     sorted.forEach(ev => {
-      const period = getPeriod(ev.minuto);
+      const period = ev.periodo || getPeriod(ev.minuto);
       if (period !== currentPeriod) {
         currentPeriod = period;
         timeline.appendChild(createPeriodDividerDOM(period));
@@ -724,10 +731,22 @@ import sponsorInfo from '../data/sponsor.json';
     // Minuto al final
     const minDiv = document.createElement('div');
     minDiv.className = 'event-minute-text shrink-0 font-["Outfit"] font-black text-sm text-amber-500 w-10 text-right';
-    if (ev.minuto > 120) {
+    
+    const period = ev.periodo || getPeriod(ev.minuto);
+    if (period === 'PEN' || ev.minuto > 120) {
       minDiv.textContent = 'PEN';
     } else {
-      minDiv.textContent = `${ev.minuto}'`;
+      let displayText = `${ev.minuto}'`;
+      if (period === '1T' && ev.minuto > 45) {
+        displayText = `45 + ${ev.minuto - 45}'`;
+      } else if (period === '2T' && ev.minuto > 90) {
+        displayText = `90 + ${ev.minuto - 90}'`;
+      } else if (period === '1TS' && ev.minuto > 105) {
+        displayText = `105 + ${ev.minuto - 105}'`;
+      } else if (period === '2TS' && ev.minuto > 120) {
+        displayText = `120 + ${ev.minuto - 120}'`;
+      }
+      minDiv.textContent = displayText;
     }
     detailsContainer.appendChild(minDiv);
 
