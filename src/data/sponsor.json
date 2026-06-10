@@ -31,7 +31,7 @@
   "theme": "dark",
   "colors": {
     "appBg": "#4f5b0a",
-    "appIconsBg": "#4f5b0a",
+    "appIconsBg": "#bedc44",
     "splashBg": "linear-gradient(135deg, #bedc44 0%, #bedc44 50%, #bedc44 100%)",
     "headerBg": "#bedc44",
     "headerText": "#4f5b0a",
