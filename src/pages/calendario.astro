@@ -126,15 +126,30 @@ const anchorsShown  = new Set<string>();
           <div class="space-y-2 mb-1">
             <div class="match-card px-4 py-3 transition-all hover:border-amber-400/30 border border-transparent"
                  data-match-id={match.id}
+                 data-estado={match.estado}
+                 data-minuto-actual={match.minuto_actual ?? 0}
+                 data-cronometro-corriendo={match.cronometro_corriendo ? 'true' : 'false'}
+                 data-hora-inicio-periodo={match.hora_inicio_periodo || ''}
+                 data-tiempo-adicional={match.tiempo_adicional ?? 0}
+                 data-periodo-actual={match.periodo_actual || ''}
                      onclick={`window.openMatchDetailDrawer && window.openMatchDetailDrawer('${match.id}')`}>
               <div class="flex items-center gap-3">
 
                 {/* Hora / Estado */}
                 <div class="shrink-0 w-[52px] text-center match-status-container">
                   {match.estado === 'en_curso' ? (
-                    <span class="text-xs font-bold text-amber-500 animate-pulse">
-                      {match.minuto_actual}'
-                    </span>
+                    <div class="flex items-center justify-center gap-1">
+                      <span class="text-xs font-bold text-amber-500 animate-pulse match-card-minute-display">
+                        {match.periodo_actual === 'PEN' ? "120' (Penales)" : `${match.minuto_actual}'`}
+                      </span>
+                      {match.tiempo_adicional && match.tiempo_adicional > 0 && match.periodo_actual !== 'PEN' ? (
+                        <span class="match-card-stoppage-display ml-1 text-[8px] font-black bg-red-500/15 text-red-400 border border-red-500/20 px-1 rounded inline-block">
+                          +{match.tiempo_adicional}
+                        </span>
+                      ) : (
+                        <span class="match-card-stoppage-display hidden"></span>
+                      )}
+                    </div>
                   ) : match.estado === 'finalizado' ? (
                     <div class="flex flex-col items-center gap-1">
                       <span class="text-[8px] font-bold px-1.5 py-0.5 rounded-full inline-block"

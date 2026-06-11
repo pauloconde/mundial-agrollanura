@@ -429,15 +429,15 @@ const groupsList = Array.from(new Set(Object.values(teamGroups))).sort();
 
         list.forEach(p => {
           const card = document.createElement('div');
-          card.className = 'glass p-3.5 rounded-2xl border border-white/5 flex items-center justify-between gap-4';
+          card.className = 'glass p-3.5 rounded-2xl border border-white/5 flex flex-col gap-2';
 
           const age = calculateAge(p.fecha_nacimiento);
           const heightFormatted = p.estatura ? `${(p.estatura / 100).toFixed(2)} m` : null;
 
           card.innerHTML = `
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-sm text-white truncate">${p.nombre}</p>
-              <div class="flex items-center gap-1.5 mt-1 text-gray-400 text-xs truncate">
+            <div class="w-full min-w-0">
+              <p class="font-bold text-sm text-white leading-tight">${p.nombre}</p>
+              <div class="flex items-center gap-1.5 mt-1.5 text-gray-400 text-xs truncate">
                 <svg class="w-3.5 h-3.5 shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
@@ -445,10 +445,10 @@ const groupsList = Array.from(new Set(Object.values(teamGroups))).sort();
               </div>
             </div>
             
-            <div class="flex items-center gap-1.5 shrink-0">
-              ${age ? `<span class="text-[10px] font-bold bg-white/5 border border-white/5 text-gray-300 px-2 py-1 rounded-lg">${age} años</span>` : ''}
-              ${heightFormatted ? `<span class="text-[10px] font-bold bg-white/5 border border-white/5 text-gray-300 px-2 py-1 rounded-lg">${heightFormatted}</span>` : ''}
-              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-lg border ${config.color}">${posCode}</span>
+            <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-white/5">
+              ${age ? `<span class="text-[10px] font-bold bg-white/5 border border-white/5 text-gray-300 px-2 py-0.5 rounded-lg">${age} años</span>` : ''}
+              ${heightFormatted ? `<span class="text-[10px] font-bold bg-white/5 border border-white/5 text-gray-300 px-2 py-0.5 rounded-lg">${heightFormatted}</span>` : ''}
+              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-lg border ${config.color}">${posCode}</span>
             </div>
           `;
           grid.appendChild(card);

@@ -68,9 +68,14 @@ import sponsorInfo from '../data/sponsor.json';
           <span id="penalties-score-text" class="text-xs font-black uppercase tracking-wider text-amber-500 mt-1 hidden">
             (0 - 0 Pen)
           </span>
-          <span id="match-minute-counter" class="text-xs font-bold text-amber-500 mt-1.5 hidden animate-pulse">
-            1'
-          </span>
+          <div class="flex items-center justify-center gap-1.5 mt-1.5">
+            <span id="match-minute-counter" class="text-xs font-bold text-amber-500 hidden animate-pulse">
+              1'
+            </span>
+            <span id="match-stoppage-badge" class="text-[10px] font-black bg-red-500/15 text-red-400 border border-red-500/30 px-1.5 py-0.5 rounded hidden">
+              +0
+            </span>
+          </div>
         </div>
 
         <!-- Visitante -->
@@ -518,6 +523,7 @@ import sponsorInfo from '../data/sponsor.json';
 
     // Estado y Minuto
     if (statusBadge) {
+      const stoppageBadge = document.getElementById('match-stoppage-badge');
       if (partido.estado === 'en_curso') {
         statusBadge.textContent = "EN VIVO";
         statusBadge.style.color = '#ef4444';
@@ -525,19 +531,40 @@ import sponsorInfo from '../data/sponsor.json';
         statusBadge.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
         if (liveDot) liveDot.classList.remove('hidden');
         
+        if (stoppageBadge) {
+          if (partido.tiempo_adicional > 0) {
+            stoppageBadge.textContent = `+${partido.tiempo_adicional}`;
+            stoppageBadge.classList.remove('hidden');
+          } else {
+            stoppageBadge.classList.add('hidden');
+          }
+        }
+        
         if (minuteCounter) {
           minuteCounter.classList.remove('hidden', 'text-[var(--text-secondary)]', 'font-semibold');
           minuteCounter.classList.add('text-amber-500', 'animate-pulse', 'font-bold');
           
           const min = partido.minuto_actual || 0;
-          if (min > 120) {
-            minuteCounter.textContent = "Tanda de Penaltis";
+          const enPenales = partido.penales_team1 !== null && partido.penales_team1 !== undefined
+                         && partido.penales_team2 !== null && partido.penales_team2 !== undefined;
+
+          if (enPenales) {
+            // Matar el cronómetro definitivamente al entrar en penales
+            if (cronometroInterval) {
+              clearInterval(cronometroInterval);
+              cronometroInterval = null;
+            }
+            minuteCounter.textContent = "120' (Penales)";
             minuteCounter.classList.remove('animate-pulse');
+            if (stoppageBadge) {
+              stoppageBadge.classList.add('hidden');
+              stoppageBadge.textContent = '';
+            }
           } else if (partido.cronometro_corriendo && partido.hora_inicio_periodo) {
             updateStopwatchDisplay(min, partido.hora_inicio_periodo, partido.tiempo_adicional || 0);
           } else {
             // Pausado (ej: entretiempo)
-            minuteCounter.textContent = `${min}' (Pausa)`;
+            minuteCounter.textContent = `${min}' (Entretiempo)`;
             minuteCounter.classList.remove('animate-pulse');
           }
         }
@@ -547,6 +574,7 @@ import sponsorInfo from '../data/sponsor.json';
         statusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
         statusBadge.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
         if (liveDot) liveDot.classList.add('hidden');
+        if (stoppageBadge) stoppageBadge.classList.add('hidden');
         if (minuteCounter) {
           minuteCounter.textContent = "TC (Tiempo Completo)";
           minuteCounter.classList.remove('hidden', 'text-amber-500', 'animate-pulse');
@@ -558,6 +586,7 @@ import sponsorInfo from '../data/sponsor.json';
         statusBadge.style.borderColor = 'rgba(255, 255, 255, 0.15)';
         statusBadge.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
         if (liveDot) liveDot.classList.add('hidden');
+        if (stoppageBadge) stoppageBadge.classList.add('hidden');
         if (timeline) {
           timeline.innerHTML = '';
         }
@@ -645,10 +674,28 @@ import sponsorInfo from '../data/sponsor.json';
     if (emptyState) emptyState.classList.add('hidden');
 
     // Ordenar descendente (sucesos más recientes arriba)
+    // El orden de periodos define la prioridad, no el minuto bruto
+    // Esto evita que 45+7' (1T) aparezca encima de 45' (2T)
+    const PERIOD_ORDER: Record<string, number> = {
+      'PEN': 6, '2TS': 5, '1TS': 4, '2T': 3, '1T': 2,
+      // Fallbacks legacy
+      'penaltis': 6, 'segundo_extra': 5, 'primer_extra': 4,
+      'segundo_tiempo': 3, 'primer_tiempo': 2
+    };
+
     const sorted = [...eventos].sort((a, b) => {
-      if (b.minuto !== a.minuto) {
-        return b.minuto - a.minuto;
-      }
+      const periodA = a.periodo || getPeriod(a.minuto);
+      const periodB = b.periodo || getPeriod(b.minuto);
+      const orderA = PERIOD_ORDER[periodA] ?? 1;
+      const orderB = PERIOD_ORDER[periodB] ?? 1;
+
+      // 1. Ordenar por periodo (mayor periodo primero)
+      if (orderB !== orderA) return orderB - orderA;
+
+      // 2. Dentro del mismo periodo, ordenar por minuto descendente
+      if (b.minuto !== a.minuto) return b.minuto - a.minuto;
+
+      // 3. Desempate por fecha de creación
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
 

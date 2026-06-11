@@ -965,6 +965,14 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
         const statusContainer = card.querySelector('.match-status-container');
         const scoreContainer = card.querySelector('.match-score-container');
 
+        // Guardar atributos de estado para tickers en tiempo real
+        card.dataset.estado = match.estado;
+        card.dataset.minutoActual = String(match.minuto_actual || 0);
+        card.dataset.cronometroCorriendo = match.cronometro_corriendo ? 'true' : 'false';
+        card.dataset.horaInicioPeriodo = match.hora_inicio_periodo || '';
+        card.dataset.tiempoAdicional = String(match.tiempo_adicional || 0);
+        card.dataset.periodoActual = match.periodo_actual || '';
+
         // 1. Actualizar Nombres de Equipos y Banderas
         const t1Span = card.querySelector('.team1-name-span');
         const t2Span = card.querySelector('.team2-name-span');
@@ -1044,11 +1052,19 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
             if (!statusContainer || isHero || isCarousel) {
               if (match.estado === 'en_curso') {
                 const min = match.minuto_actual || 0;
-                const minText = min > 120 ? 'Penales' : `${min}'`;
-                scoreHtml += `
-                  <span class="text-[10px] font-bold text-amber-500 animate-pulse mt-0.5">
-                    ${minText}
+                const minText = match.periodo_actual === 'PEN' ? "120' (Penales)" : (min > 120 ? 'Penales' : `${min}'`);
+                const stoppageText = (match.tiempo_adicional > 0 && min <= 120 && match.periodo_actual !== 'PEN') ? `
+                  <span class="match-card-stoppage-display ml-1.5 text-[9px] font-black bg-red-500/15 text-red-400 border border-red-500/20 px-1 rounded inline-block">
+                    +${match.tiempo_adicional}
                   </span>
+                ` : '<span class="match-card-stoppage-display hidden"></span>';
+                scoreHtml += `
+                  <div class="flex items-center justify-center gap-1 mt-0.5">
+                    <span class="text-[10px] font-bold text-amber-500 animate-pulse match-card-minute-display">
+                      ${minText}
+                    </span>
+                    ${stoppageText}
+                  </div>
                 `;
               }
             }
@@ -1064,7 +1080,14 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
           let statusHtml = '';
           if (match.estado === 'en_curso') {
             const min = match.minuto_actual || 0;
-            if (min > 120) {
+            if (match.periodo_actual === 'PEN') {
+              statusHtml = `
+                <span class="text-[8px] font-bold px-1.5 py-0.5 rounded-full inline-block animate-pulse"
+                      style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3);">
+                  PENALES
+                </span>
+              `;
+            } else if (min > 120) {
               statusHtml = `
                 <span class="text-[8px] font-bold px-1.5 py-0.5 rounded-full inline-block animate-pulse"
                       style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3);">
@@ -1072,10 +1095,18 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
                 </span>
               `;
             } else {
-              statusHtml = `
-                <span class="text-xs font-bold text-amber-500 animate-pulse">
-                  ${min}'
+              const stoppageText = (match.tiempo_adicional > 0) ? `
+                <span class="match-card-stoppage-display ml-1 text-[8px] font-black bg-red-500/15 text-red-400 border border-red-500/20 px-1 rounded inline-block">
+                  +${match.tiempo_adicional}
                 </span>
+              ` : '<span class="match-card-stoppage-display hidden"></span>';
+              statusHtml = `
+                <div class="flex items-center justify-center gap-1">
+                  <span class="text-xs font-bold text-amber-500 animate-pulse match-card-minute-display">
+                    ${min}'
+                  </span>
+                  ${stoppageText}
+                </div>
               `;
             }
           } else if (match.estado === 'finalizado') {
@@ -1156,6 +1187,74 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
         }
       }
 
+      // Función global para actualizar los minutos transcurridos en todas las tarjetas de partidos en curso
+      function updateAllActiveTickers() {
+        const cards = document.querySelectorAll('[data-match-id]');
+        cards.forEach(card => {
+          const htmlCard = card as HTMLElement;
+          const estado = htmlCard.dataset.estado;
+          if (estado !== 'en_curso') return;
+
+          const minEl = htmlCard.querySelector('.match-card-minute-display');
+          if (!minEl) return;
+
+          const cronometroCorriendo = htmlCard.dataset.cronometroCorriendo === 'true';
+          const horaInicioIso = htmlCard.dataset.horaInicioPeriodo;
+          const minutoBase = parseInt(htmlCard.dataset.minutoActual || '0', 10);
+          const tiempoAdicional = parseInt(htmlCard.dataset.tiempoAdicional || '0', 10);
+          const periodoActual = htmlCard.dataset.periodoActual || '';
+
+          let displayText = "";
+          if (periodoActual === 'PEN') {
+            displayText = "120' (Penales)";
+          } else if (cronometroCorriendo && horaInicioIso) {
+            const startTime = new Date(horaInicioIso).getTime();
+            const diffMs = Date.now() - startTime;
+            const elapsedMins = Math.floor(diffMs / 60000);
+            let currentMinute = minutoBase + elapsedMins;
+            
+            let limit = 45;
+            if (minutoBase >= 105) {
+              limit = 120;
+            } else if (minutoBase >= 90) {
+              limit = 105;
+            } else if (minutoBase >= 45) {
+              limit = 90;
+            }
+            
+            if (currentMinute >= limit) {
+              if (tiempoAdicional > 0) {
+                const extraMins = currentMinute - limit;
+                displayText = `${limit} + ${Math.min(extraMins, tiempoAdicional)}'`;
+              } else {
+                displayText = `${limit}'`;
+              }
+            } else {
+              displayText = `${currentMinute}'`;
+            }
+          } else {
+            displayText = minutoBase > 120 ? 'Penales' : `${minutoBase}'`;
+          }
+
+          if (minEl.textContent !== displayText) {
+            minEl.textContent = displayText;
+          }
+
+          // Actualizar dinámicamente la insignia del tiempo de descuento
+          const stoppageEl = htmlCard.querySelector('.match-card-stoppage-display') as HTMLElement;
+          if (stoppageEl) {
+            if (tiempoAdicional > 0 && minutoBase <= 120) {
+              stoppageEl.textContent = `+${tiempoAdicional}`;
+              stoppageEl.classList.remove('hidden');
+              stoppageEl.style.display = 'inline-block';
+            } else {
+              stoppageEl.classList.add('hidden');
+              stoppageEl.style.display = 'none';
+            }
+          }
+        });
+      }
+
       // Suscripción Realtime a cambios de partidos
       supabase
         .channel('global-match-cards-tracker')
@@ -1171,6 +1270,9 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
           cards.forEach(card => {
             updateCard(card as HTMLElement, match);
           });
+
+          // Actualizar inmediatamente los minutos tras la actualización en tiempo real
+          updateAllActiveTickers();
 
           // Formatear las horas locales de los elementos recién creados/actualizados
           if ((window as any).applyLocalTimes) {
@@ -1195,6 +1297,9 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
             });
           });
 
+          // Iniciar ticker inmediatamente tras sincronizar
+          updateAllActiveTickers();
+
           // Formatear las horas locales
           if ((window as any).applyLocalTimes) {
             (window as any).applyLocalTimes();
@@ -1205,9 +1310,13 @@ const kickoffISOs = data.matches.map(m => getMatchUTC(m));
       }
 
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', syncMatchCardsWithDatabase);
+        document.addEventListener('DOMContentLoaded', () => {
+          syncMatchCardsWithDatabase();
+          setInterval(updateAllActiveTickers, 10000); // Ticker cada 10 segundos
+        });
       } else {
         syncMatchCardsWithDatabase();
+        setInterval(updateAllActiveTickers, 10000); // Ticker cada 10 segundos
       }
     </script>
 
