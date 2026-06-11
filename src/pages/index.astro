@@ -20,10 +20,8 @@ const now  = new Date();
 // ── Próximo partido ──
 const nextMatch = getNextMatch(data, now);
 
-// ── Partidos de hoy (fecha local del usuario — se ajusta con JS en cliente) ──
-// Usamos la fecha UTC actual como aproximación para el SSR.
-// El cliente puede ajustar si es necesario.
-const todayStr = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
+// ── Partidos de hoy (fecha local del servidor) ──
+const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 const todayMatches = getMatchesForDate(data, todayStr);
 
 // ── Si no hay partidos hoy, mostrar los siguientes 8 ──
